@@ -1,3 +1,5 @@
+ipywidgets
+ipython
 scikit-learn
 matplotlib
 seaborn
