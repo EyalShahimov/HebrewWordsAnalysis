@@ -1,3 +1,1 @@
 from .academy_website import AcademyWebsite
-from .roots_registry import RootsRegistry
-from .conjugations_registry import ConjugationsRegistry

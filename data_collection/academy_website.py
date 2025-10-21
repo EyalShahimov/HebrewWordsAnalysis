@@ -1,6 +1,3 @@
-from typing import List
-from .roots_response import RootsResponse
-from .conjugations_response import ConjugationsResponse
 import requests
 import json
 
@@ -19,20 +16,22 @@ class AcademyWebsite:
 
         self.__expired_nonce_page = '-1'
 
-    def fetch_roots(self, prefix: str) -> List[RootsResponse] | None:
+    def fetch_roots(self, prefix: str):
+        return self.__fetch(self.__roots_url % prefix)
+
+    def fetch_conjugations(self, root: str, stem: str):
+        return self.__fetch(self.__conjugations_url % (root, stem))
+
+    def __fetch(self, url: str):
         while True:
-            response, success = self.__request(self.__roots_url % prefix)
+            try:
+                response, success = self.__request(url)
+            except Exception as ex:
+                print(f'Error fetching URL {url}: {ex}')
+                continue
             if not success:
                 continue
-            return [RootsResponse(**entry) for entry in response]
-
-
-    def fetch_conjugations(self, root: str, stem: str) -> List[ConjugationsResponse] | None:
-        while True:
-            response, success = self.__request(self.__conjugations_url % (root, stem))
-            if not success:
-                continue
-            return [ConjugationsResponse(**entry) for entry in response]
+            return response
 
     def __request(self, url: str):
         page_text = requests.get(url, headers=self.__headers).text
