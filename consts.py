@@ -11,6 +11,7 @@ class Alephbet:
         'ף': 'פ',
         'ץ': 'צ',
     }
+    FINALS_REVERSE_MAPPING = {v: k for k, v in FINALS_MAPPING.items()}
 
 class Niqqud(StrEnum):
     PATAH = '\u05B7'
