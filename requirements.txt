@@ -1,3 +1,5 @@
+torch
+umap-learn
 numpy
 ipywidgets
 ipython
@@ -8,3 +10,4 @@ pandas
 pydantic
 tqdm
 requests
+ipympl
