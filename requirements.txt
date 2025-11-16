@@ -1,6 +1,13 @@
+torch
+umap-learn
+numpy
+ipywidgets
+ipython
+scikit-learn
 matplotlib
 seaborn
 pandas
 pydantic
 tqdm
 requests
+ipympl
